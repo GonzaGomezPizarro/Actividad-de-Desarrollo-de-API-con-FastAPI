@@ -4,12 +4,12 @@ import requests
 app = FastAPI()
 
 # Endpoint GET
-@app.get("/GET")
+@app.get("/api")
 def get_data():
     return {"data": "Este es el dato"}
 
 # Endpoint POST
-@app.post("/POST")
+@app.post("/api")
 def fetch_external_api():
     try:
         response = requests.get("https://api.publicapis.org")
@@ -21,7 +21,7 @@ def fetch_external_api():
         raise HTTPException(status_code=500, detail=f"Error fetching external API: {str(e)}")
 
 # Endpoint UPDATE
-@app.put("/PUT/{number}")
+@app.put("/api/{number}")
 def square_number(number: int):
     result = number ** 2
     return {"result": result}
